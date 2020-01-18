@@ -1,0 +1,13 @@
+[Unit]
+Description=photo-filter Node.js service
+After=network.target
+
+[Service]
+Restart=always
+User=nobody
+Group=nobody
+Environment=NODE_ENV=production
+ExecStart=/bin/node /srv/www/s3photoapp/apps/photo-filter/server.js
+
+[Install]
+WantedBy=multi-user.target

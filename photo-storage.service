@@ -1,0 +1,15 @@
+[Unit]
+Description=photo-storage Node.js service
+After=network.target
+
+[Service]
+Restart=always
+User=nobody
+Group=nobody
+Environment=NODE_ENV=production
+Environment=AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
+Environment=AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
+ExecStart=/bin/node /srv/www/s3photoapp/apps/photo-storage/server.js
+
+[Install]
+WantedBy=multi-user.target
