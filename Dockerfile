@@ -34,6 +34,15 @@ COPY photo-storage.service /etc/systemd/system/photo-storage.service
 COPY web-client.service /etc/systemd/system/web-client.service
 COPY photos.example.com.conf /etc/nginx/conf.d/photos.example.com.conf
 
+RUN echo "set ts=4 sw=4" >> ~/.vimrc
+RUN echo "IPaddr photos.example.com" >> /etc/hosts
+
+RUN ln -s /srv/www/s3photoapp/apps/web-client/public /var/www/photos.example.com && \
+    service nginx reload
+##SELinux case:
+	#RUN semanage fcontext -a -t httpd_sys_content_t '/srv/www/.*/public(/.*)?'
+	#RUN restorecon -R /srv/www 
+
 RUN service photo-storage start && \
 	service photo-filter start && \
 	service web-client start
