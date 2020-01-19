@@ -37,6 +37,6 @@ RUN cd /srv/www/content-nginx-uwsgi && make migrate
 
 #start notes.uwsgi service
 
-
+RUN pip3.6 install -y boom
 
 
