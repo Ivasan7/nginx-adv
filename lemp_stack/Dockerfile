@@ -33,3 +33,5 @@ RUN yum update -y && yum install -y \
     MariaDB-client \
     MariaDB-devel \
     MariaDB-shared
+
+# TODO: Config ./mysql_secure_installation
